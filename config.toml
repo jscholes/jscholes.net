@@ -1,0 +1,5 @@
+baseURL = "http://jscholes.net/"
+languageCode = "en-gb"
+title = "James Scholes"
+disableRSS = true
+publishdir = "site"
