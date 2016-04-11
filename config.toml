@@ -6,3 +6,4 @@ publishdir = "site"
 
 [params]
     description = "Personal projects"
+    author = "James Scholes"
