@@ -5,5 +5,6 @@ disableRSS = true
 publishdir = "site"
 
 [params]
-    description = "Personal projects"
+    description = "Personal project website and blog of James Scholes, an independent programmer from West Yorkshire"
+    tagline = "Personal projects"
     author = "James Scholes"
