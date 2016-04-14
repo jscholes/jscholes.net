@@ -1,0 +1,36 @@
+                    <FORM action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="charset" value="utf-8">
+                    <input type="hidden" name="cmd" value="_donations">
+                    <input type="hidden" name="return" value="{{ .Permalink }}">
+                    <input type="hidden" name="cancel_return" value="{{ .Permalink }}">
+                    <input type="hidden" id="paypal-currency-code" name="currency_code" value="GBP">
+                    <input type="hidden" name="business" value="james@jamesscholes.com">
+                    <input type="hidden" name="item_name" value="{{ .Title }} Donation">
+                    <input type="hidden" name="cn" value="Extra note to send with your donation">
+                    <input type="hidden" name="no_shipping" value="1">
+                    <noscript>
+                        <p>Note: Currency selection requires JavaScript to be enabled in your browser.</p>
+                    </noscript>
+                    <fieldset>
+                    <legend>Donate via PayPal</legend>
+                    <label for="currency">Currency</label>
+                    <select id="currency" name="currency" onchange="onCurrencyChange()">
+                    <option value="GBP">Pound Sterling</option>
+                    <option value="USD">US Dollar</option>
+                    <option value="EUR">Euro</option>
+                    <option value="CAD">Canadian Dollar</option>
+                    <option value="AUD">Australian Dollar</option>
+                    </select>
+                    <label for="amount">Donation amount</label>
+                    <input type="text" id="amount" name="amount" pattern="^\d*(\.\d{2}$)?" size="4" required>
+                    <input type="submit" name="submit" value="Donate">
+                    </fieldset>
+                    </form>
+                    <script type="text/javascript">
+                    function onCurrencyChange() {
+                        var currency_dropdown = document.getElementById("currency");
+                        selected_currency_code = currency_dropdown.value;
+                        paypal_currency_field = document.getElementById("paypal-currency-code");
+                        paypal_currency_field.value = selected_currency_code;
+                    }
+                    </script>

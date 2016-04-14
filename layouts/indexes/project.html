@@ -1,0 +1,15 @@
+{{ $.Scratch.Set "custom_title" "Software" }}
+{{ $parent_context := . }}
+{{ $paginator := .Paginate (where .Site.Pages "Type" "project") }}
+{{ partial "header.html" . }}
+                <section class="post-content">
+                {{ if eq $paginator.NumberOfElements 0 }}
+                <p>No projects found.</p>
+                {{ else }}
+                {{ range $page := $paginator.Pages }}
+{{ partial "project.html" $page }}
+                {{ end }}
+                {{ end }}
+{{ partial "pagination.html" $paginator }}
+                </section>
+{{ partial "footer.html" . }}

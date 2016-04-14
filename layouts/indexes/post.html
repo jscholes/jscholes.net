@@ -1,0 +1,15 @@
+{{ $.Scratch.Set "custom_title" "Blog" }}
+{{ $parent_context := . }}
+{{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
+{{ partial "header.html" . }}
+                <section class="post-content">
+                {{ if eq $paginator.NumberOfElements 0 }}
+                <p>No posts found.</p>
+                {{ else }}
+                {{ range $page := $paginator.Pages }}
+{{ partial "post.html" $page }}
+                {{ end }}
+                {{ end }}
+{{ partial "pagination.html" $paginator }}
+                </section>
+{{ partial "footer.html" . }}

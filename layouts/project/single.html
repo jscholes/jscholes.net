@@ -1,0 +1,43 @@
+{{ $parent_context := . }}
+{{ partial "header.html" . }}
+                <section class="post-content">
+{{ .Content }}
+                    {{ with .Params.features }}
+                    {{ $features_defined := len $.Params.features }}
+                    {{ if gt $features_defined 0 }}
+                    <h3 id="features">Features</h3>
+                    <ul>
+                    {{ range $feature := $.Params.features }}
+                        <li>{{ $feature }}</li>
+                    {{ end }}
+                    </ul>
+                    {{ end }}
+                    {{ end }}
+                    {{ with .Params.donation_text }}
+                    <h3 id="donate">Donations</h3>
+                    {{ . | markdownify }}
+                    {{ partial "paypal.html" $parent_context }}
+                    {{ end }}
+                    <h3 id="download">Download</h3>
+                    {{ with .Params.pre_download_text }}
+                    {{ . | markdownify }}
+                    {{ end }}
+                    {{ with .Params.download_link_url }}
+                    <p><a href="{{ . }}">{{ if $parent_context.Params.download_link_text }}{{ $parent_context.Params.download_link_text }}{{ else }}{{ . }}{{ end }}</a></p>
+                    {{ end }}
+                    {{ with .Params.post_download_text }}
+                    {{ . | markdownify }}
+                    {{ end }}
+                    {{ $slug := .Params.name }}
+                    {{ $posts := where .Site.Pages "Type" "post" }}
+                    {{ $related_posts := where $posts ".Params.associated_project" $slug }}
+                    {{ if gt (len $related_posts) 0 }}
+                    <h3 id="related">Related content</h3>
+                    <ul class="link-list">
+                    {{ range $related_posts }}
+                    <li><a class="post-title" href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                    </ul>
+                    {{ end }}
+                </section>
+{{ partial "footer.html" . }}

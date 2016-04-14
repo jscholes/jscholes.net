@@ -1,0 +1,7 @@
+{{ $parent_context := . }}
+{{ partial "header.html" . }}
+                <section class="post-meta">Posted: {{ .Date.Format .Site.Params.date_format }} at {{ .Date.Format .Site.Params.time_format }}</section>
+                <section class="post-content">
+{{ .Content }}
+                </section>
+{{ partial "footer.html" . }}
