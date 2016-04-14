@@ -2,9 +2,39 @@ baseURL = "http://jscholes.net/"
 languageCode = "en-gb"
 title = "James Scholes"
 disableRSS = true
+paginate = 10
 publishdir = "site"
 
 [params]
     description = "Personal project website and blog of James Scholes, an independent programmer from West Yorkshire"
     tagline = "Personal projects"
     author = "James Scholes"
+    date_format = "January 2 2006"
+    time_format = "3:04 PM"
+    twitter_username = "JamesScholes"
+    github_username = "jscholes"
+
+[[menu.main]]
+    URL = "/project/"
+    Name = "Software"
+    Weight = 3
+
+[[menu.main]]
+    URL = "/post/"
+    Name = "Blog"
+    Weight = 2
+
+[[menu.main]]
+    URL = "/post/"
+    Name = "Blog"
+    Weight = 2
+
+[[menu.main]]
+    URL = "https://twitter.com/JamesScholes"
+    Name = "Twitter (@JamesScholes)"
+    Weight = 4
+
+[[menu.main]]
+    URL = "https://github.com/jscholes"
+    Name = "GitHub (@jscholes)"
+    Weight = 5
